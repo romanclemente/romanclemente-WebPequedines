@@ -1,0 +1,44 @@
+<div class="example-container" *ngIf="servicio.user | async as user; else login" [class.example-is-mobile]="mobileQuery.matches">
+
+    <!--navBar-->
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button class="btn draw-border" (click)="snav.toggle()"><i class="fas fa-bars"></i></button>
+    <h1 class="example-app-name">Pequedines</h1>
+
+    <div class="login" *ngIf="servicio.user | async as user; else login">
+        <button type="button" class="btn draw-border" (click)="servicio.logout()">Cerrar Sesión</button>
+      </div>
+    
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container"
+   [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+     [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+
+      <mat-nav-list>
+          <app-side-card (click)="snav.toggle()" mat-list-item></app-side-card>
+        <a [routerLink]="nav.route" mat-list-item (click)="snav.toggle()"
+         *ngFor="let nav of fillerNav">
+         <br>
+            <mat-icon class="icono" >{{nav.icon}}</mat-icon>
+            <!--<i class={{nav.icon}}></i>--> 
+            {{nav.name}}</a>
+      </mat-nav-list>
+
+      <mat-nav-list *ngIf="servicio.comprobarSiEresAdmin()">
+
+      <a [routerLink]="['/alltrabajos']" mat-list-item (click)="snav.toggle()">
+          <mat-icon class="icono">forward</mat-icon>Todos los trabajos</a>
+    </mat-nav-list>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content> 
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+ </mat-sidenav-container>
+</div>
+
+<ng-template #login>    
+  </ng-template>

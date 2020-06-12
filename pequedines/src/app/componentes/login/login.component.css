@@ -1,0 +1,28 @@
+ 
+ @media (min-width: 992px) {
+   .masthead {
+     height: 100vh;
+   }
+ }
+ footer.footer {
+   padding-top: 3rem;
+   padding-bottom: 1rem;
+ }
+ footer.footer .social-link {
+   display: block;
+   height: 4rem;
+   width: 4rem;
+   line-height: 4.3rem;
+   font-size: 1.5rem;
+   background-color: #289E16;
+   transition: background-color 0.15s ease-in-out;
+   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
+ }
+ footer.footer .social-link:hover {
+   background-color: springgreen;
+   text-decoration: none;
+ }
+.color{
+  background-color: #ff5a36;
+}
+

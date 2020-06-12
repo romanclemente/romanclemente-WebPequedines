@@ -1,0 +1,35 @@
+#contenerdor{
+    width: 100%;
+    border: 1px solid black;
+  }
+  
+.divPerfil {
+    color: #292929;
+    font: 90% Roboto, Arial, sans-serif;
+    font-weight: 300;
+     margin: 0;
+    padding: 0;
+    background-color: coral;
+}
+
+
+div#header {
+    position: relative;
+}
+
+div#wrapper {
+    float: left;
+    width: 50%;
+    background-color: cornflowerblue;
+}
+
+div#navigation {
+    float: right;
+    background-color: forestgreen;
+}
+
+div#extra {
+    clear: left;
+    width: 50%;
+    background-color: aquamarine;
+}

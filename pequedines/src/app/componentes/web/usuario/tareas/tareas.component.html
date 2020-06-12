@@ -1,0 +1,66 @@
+<table style="height: 100%; position: fixed; background-image: url(../../../../assets/fondo_tareas.jpg);
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center center;
+background-attachment: fixed;
+width: 100%;">
+
+  <tr>
+    <td style="width: 60%;">
+      <div style=" overflow-y: scroll; overflow-x: hidden; height: 100%;">
+        <app-tareas-card></app-tareas-card>
+      </div>
+    </td>
+
+    <td *ngIf="servicio.comprobarSiEresAdmin()" style="width: 40%;">
+
+      <mat-card>
+        <mat-card-title>Crear Tarea</mat-card-title>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Titulo</label>
+          <input [value]="input_titulo" type="text" class="form-control" name="titulo" [(ngModel)]="titulo" />
+          <small id="emailHelp" class="form-text text-muted">Es aconsejable que el titulo sea el mismo que el de la
+            entrega</small>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Fecha entrega</label>
+          <input [value]="entrega" type="text" class="form-control" name="entrega" placeholder="dd/mm/aaaa" [(ngModel)]="entrega" />
+          <small id="emailHelp" class="form-text text-muted"></small>
+        </div>
+
+
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Descripcion</label>
+          <textarea [value]="descripcion" type="text" cols="40" rows="5" style="width:100%; height:100px;"
+            class="form-control" name="descripcion" [(ngModel)]="descripcion"></textarea>
+          <small id="emailHelp" class="form-text text-muted"></small>
+        </div>
+        <form style="margin-bottom: 1%; margin-top: 4%;" #form="ngForm">
+          <a style="margin: auto; cursor: pointer;" (click)="agregarTarea(titulo, entrega, descripcion, url)"
+            class="cta">
+            <span (click)="form.resetForm()">Subir</span>
+            <svg width="13px" height="10px" viewBox="0 0 13 10">
+              <path d="M1,5 L11,5"></path>
+              <polyline points="8 1 12 5 8 9"></polyline>
+            </svg>
+          </a>
+
+        </form>
+
+      </mat-card>
+
+
+
+
+
+      <form #form>
+
+      </form>
+
+    </td>
+  </tr>
+
+
+</table>

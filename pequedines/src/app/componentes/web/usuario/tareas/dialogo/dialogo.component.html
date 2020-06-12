@@ -1,0 +1,43 @@
+<mat-card>
+  <mat-card-title>Entregar tarea</mat-card-title>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Agregar comentario</label>
+    <input type="text" class="form-control" name="comentario" [(ngModel)]="data.comentario" />
+    <small id="emailHelp" class="form-text text-muted"></small>
+  </div>
+
+  <form style="margin-bottom: 1%;" #form="ngForm">
+    <div class="custom-file" style="width: 80%;">
+
+      <input class="custom-file-input" type="file" multiple="multiple" (change)="waitFor($event)" />
+
+      <label class="custom-file-label" for="customFile">{{archivoNombre}}</label>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <a style="margin: auto; cursor: pointer;" [mat-dialog-close]="data" cdkFocusInitial class="cta">
+      <span (click)="form.resetForm()">Subir</span>
+
+      <svg width="13px" height="10px" viewBox="0 0 13 10">
+        <path d="M1,5 L11,5"></path>
+        <polyline points="8 1 12 5 8 9"></polyline>
+      </svg>
+    </a>
+
+    <a style="margin: auto; cursor: pointer;" [mat-dialog-close]="data" cdkFocusInitial class="cta">
+      <span (click)="onNoClick()">Cancelar</span>
+
+      <svg width="13px" height="10px" viewBox="0 0 13 10">
+        <path d="M1,5 L11,5"></path>
+        <polyline points="8 1 12 5 8 9"></polyline>
+      </svg>
+    </a>
+
+
+
+  </form>
+
+</mat-card>

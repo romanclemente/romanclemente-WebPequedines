@@ -1,0 +1,159 @@
+<div style="background-image: url(../../../../assets/fondo_login.jpg); width: 100%; height: 100%; overflow-y: auto;
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center center;
+background-attachment: fixed;">
+    <div  class="container" *ngIf="servicio.user | async as user">
+        <div class="row my-2">
+            <div class="col-lg-8 order-lg-2">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Perfil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Añadir informacion</a>
+                    </li>
+                </ul>
+                <div class="tab-content py-4">
+                    <div class="tab-pane active" id="profile">
+                        <h1 class="mb-3">Mi perfil</h1>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3>Mis Datos</h3>
+                                <mat-card>Correo: {{servicio.usuario.email}}</mat-card>
+
+                                <div
+                                    *ngFor="let item of nombreApellidos(servicio.usuario.displayName); let index = index">
+                                    <mat-card *ngIf="index == 0">Nombre: {{item}}</mat-card>
+                                    <mat-card *ngIf="index == 1">Apellido : {{item}}</mat-card>
+                                    <mat-card *ngIf="index != 1 && index != 0">Apellido {{index}}: {{item}}</mat-card>
+                                </div>
+
+
+                                <mat-card>Edad: {{servicio.usuario.edad}}</mat-card>
+                                <hr>
+                                <h3>Mis Redes</h3>
+                                <mat-card>Facebook: {{servicio.usuario.facebook}}</mat-card>
+                                    <mat-card>Instagram: {{servicio.usuario.instagram}}</mat-card>
+                                        <mat-card>Twitter: {{servicio.usuario.twiiter}}</mat-card>
+                                <hr>
+                                <h3>Sobre mi</h3>
+                                <mat-card>Hobbys: {{servicio.usuario.hobby}}</mat-card>
+                                    <mat-card>Aspiraciones : {{servicio.usuario.aspiraciones}}</mat-card>
+                                        <mat-card>Otros : {{servicio.usuario.otros}}</mat-card>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="edit">
+                        <form role="form">
+                            <h2 style="text-align: center;">Quien soy</h2>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Nombre</label>
+                                <div class="col-lg-9">
+
+                                    <input class="form-control" matInput [(ngModel)]="nombre" name="nombre" type="text"
+                                        placeholder="Laura">
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Apellido</label>
+                                <div class="col-lg-9">
+
+                                    <input class="form-control" matInput [(ngModel)]="apellido" name="apellido"
+                                        type="text" placeholder="Oliva">
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Edad</label>
+                                <div class="col-lg-9">
+
+                                    <input class="form-control" matInput [(ngModel)]="edad" name="edad" type="number"
+                                        maxlength="2" placeholder="20">
+
+                                </div>
+                            </div>
+                            <hr>
+                            <h2 style="text-align: center;">Mis redes</h2>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Instagram</label>
+                                <div class="col-lg-9">
+
+                                    <input class="form-control" matInput [(ngModel)]="instagram" name="instagram"
+                                        type="text" placeholder="@username">
+
+                                    <!-- https://www.instagram.com/value/-->
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Twitter</label>
+                                <div class="col-lg-9">
+
+                                    <input class="form-control" matInput [(ngModel)]="twitter" name="twitter"
+                                        type="text" placeholder="@username">
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Facebook</label>
+                                <div class="col-lg-9">
+
+                                    <input class="form-control" matInput [(ngModel)]="facebook" name="facebook"
+                                        type="text" placeholder="@username">
+
+                                </div>
+                            </div>
+                            <hr>
+                            <h2 style="text-align: center;">Mas sobre mi</h2>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Mi tiempo libre</label>
+                                <div class="col-lg-9">
+
+                                    <input class="form-control" matInput [(ngModel)]="hobby" name="hobby" type="text"
+                                        placeholder="Correr, ver series, viajar,..">
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Aspiraciones</label>
+                                <div class="col-lg-9">
+
+                                    <input class="form-control" matInput [(ngModel)]="aspiraciones" name="aspiraciones"
+                                        type="text" placeholder="tener un coche, una mansion">
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Otros</label>
+                                <div class="col-lg-9">
+
+                                    <input class="form-control" matInput [(ngModel)]="otros" name="otros" type="text"
+                                        placeholder="facebook">
+
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label"></label>
+                                <div class="col-lg-9">
+                                    <input type="reset" class="btn btn-secondary" value="Cancel">
+                                    <button class="btn btn-primary"
+                                        (click)="agregarUsuario(servicio.usuario)">Guardar</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 order-lg-1 text-center">
+                <img [src]="user.photoURL" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+            </div>
+        </div>
+
+
+    </div>
+</div>

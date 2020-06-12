@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row" style="justify-content: space-evenly; inset-block: initial;">
+    <div class="flip-card-container" style="--hue: 10" *ngFor="let card of servicio.listaTareas;">
+      <div class="flip-card">
+
+        <div class="card-front">
+          <figure>
+            <div class="img-bg"></div>
+            <img [src]="[card.url]" alt="Brohm Lake">
+            <figcaption>{{card.titulo}}</figcaption>
+          </figure>
+
+          <ul>
+            <li>{{card.descripcion}}</li>
+            <li>{{card.fecha_entrega}}</li>
+
+
+          </ul>
+        </div>
+
+        <div class="card-back">
+          <figure>
+            <div class="img-bg"></div>
+            <img [src]="[card.url]" alt="Brohm Lake">
+          </figure>
+
+          <div *ngIf="!servicio.comprobarSiEresAdmin()">
+
+            <div *ngIf="buscarEntregas(card.id)">
+              <button>Ya entregado</button>
+            </div>
+            
+            <div *ngIf="!buscarEntregas(card.id)">
+              <button (click)="openDialog(card.titulo, card.id)">Entregar</button>
+            </div>
+            
+          </div>
+
+
+
+          <div class="design-container">
+            <span class="design design--1"></span>
+            <span class="design design--2"></span>
+            <span class="design design--3"></span>
+            <span class="design design--4"></span>
+            <span class="design design--5"></span>
+            <span class="design design--6"></span>
+            <span class="design design--7"></span>
+            <span class="design design--8"></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- /flip-card-container -->

@@ -1,0 +1,25 @@
+<div style="margin: 2%;">
+  <mat-card *ngIf="servicio.user | async as user">
+    <mat-card-content>
+      <!--[style.background]="tile.color"-->
+
+      <mat-grid-list cols="4" rowHeight="100px">
+        <!--ImagenPerfil-->
+        <mat-grid-tile [colspan]="2" [rowspan]="2">
+          
+          <img [src]="[user.photoURL]" width="100%" alt="..." />
+        </mat-grid-tile>
+       
+        <mat-grid-tile [colspan]="2" [rowspan]="2">
+          <!--Datos personales-->
+            <mat-list>
+                <mat-list-item> Nombre: {{user.displayName}} </mat-list-item>
+                <mat-list-item> Correo: {{user.email}} </mat-list-item>
+               </mat-list>
+        </mat-grid-tile>
+
+
+      </mat-grid-list>
+    </mat-card-content>
+  </mat-card>
+</div>
